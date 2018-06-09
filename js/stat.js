@@ -34,7 +34,7 @@ window.renderStatistics = function (ctx, names, times) {
   //  ищем максимальное время в массиве для рассчета высоты столбцов гистограммы
   var maxTime = times[0];
   for (var i = 1; i < times.length; i++) {
-      maxTime = Math.max(times[i], times[0]);
+    maxTime = Math.max(times[i], times[0]);
   }
   // пропорция для рассчета высоты:
   // 300s = 150px (максимальное время = максимальная высота)
