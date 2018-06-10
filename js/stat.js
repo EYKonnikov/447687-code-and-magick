@@ -6,6 +6,7 @@ var CLOUD = {
   y: 10
 };
 
+
 var GAP = 10;
 var FONT_GAP = 20;
 var BAR_WIDTH = 40;
@@ -32,9 +33,9 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', CLOUD.x + FONT_GAP, CLOUD.y + GAP + FONT_GAP * 2);
 
   //  ищем максимальное время в массиве для рассчета высоты столбцов гистограммы
-  var maxTime = times[0];
-  for (var i = 1; i < times.length; i++) {
-    maxTime = Math.max(times[i], times[0]);
+
+  var maxTime = function getMaxOfArray(times) {
+    return Math.max.apply(null, times);
   }
   // пропорция для рассчета высоты:
   // 300s = 150px (максимальное время = максимальная высота)
@@ -42,7 +43,7 @@ window.renderStatistics = function (ctx, names, times) {
   // высота = время / 1px
   var onePixel = Math.round(maxTime / BAR_MAX_HEIGHT);
 
-  for (i = 0; i < times.length; i++) {
+  for (var i = 0; i < times.length; i++) {
     // рассчитываем высоту столбца
     var columnHeight = times[i] / onePixel;
 
